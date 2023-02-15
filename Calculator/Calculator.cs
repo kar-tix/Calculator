@@ -1,8 +1,10 @@
 namespace Calculator
 {
-    public partial class form : Form
+    public partial class Calculator : Form
     {
-        public form()
+        private decimal firstValue = 0.0m, secondValue = 0.0m, finalValue = 0.0m;
+        private string operators = "+";
+        public Calculator()
         {
             InitializeComponent();
         }
@@ -143,6 +145,52 @@ namespace Calculator
         private void clearBtn_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void multiBtn_Click(object sender, EventArgs e)
+        {
+            firstValue = decimal.Parse(textBox.Text);
+            textBox.Clear();
+            operators = "x";
+        }
+
+        private void minusBtn_Click(object sender, EventArgs e)
+        {
+            firstValue = decimal.Parse(textBox.Text);
+            textBox.Clear();
+            operators = "-";
+
+        }
+
+        private void plusBtn_Click(object sender, EventArgs e)
+        {
+            firstValue = decimal.Parse(textBox.Text);
+            textBox.Clear();
+            operators = "+";
+        }
+
+        private void divBtn_Click(object sender, EventArgs e)
+        {
+            firstValue = decimal.Parse(textBox.Text);
+            textBox.Clear();
+            operators = "/";
+        }
+
+        private void equalBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void plusMinusBtn_Click(object sender, EventArgs e)
+        {
+            if(textBox.Text.Contains("-"))
+            {
+                textBox.Text = textBox.Text.Trim('-');
+            }
+            else
+            {
+                textBox.Text = "-" + textBox.Text;
+            }
         }
     }
 }

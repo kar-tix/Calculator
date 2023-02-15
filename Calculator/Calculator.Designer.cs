@@ -1,6 +1,6 @@
 ﻿namespace Calculator
 {
-    partial class form
+    partial class Calculator
     {
         /// <summary>
         ///  Required designer variable.
@@ -202,6 +202,7 @@
             this.divBtn.TabIndex = 13;
             this.divBtn.Text = "/";
             this.divBtn.UseVisualStyleBackColor = false;
+            this.divBtn.Click += new System.EventHandler(this.divBtn_Click);
             // 
             // multiBtn
             // 
@@ -213,6 +214,7 @@
             this.multiBtn.TabIndex = 14;
             this.multiBtn.Text = "x";
             this.multiBtn.UseVisualStyleBackColor = false;
+            this.multiBtn.Click += new System.EventHandler(this.multiBtn_Click);
             // 
             // minusBtn
             // 
@@ -224,6 +226,7 @@
             this.minusBtn.TabIndex = 15;
             this.minusBtn.Text = "-";
             this.minusBtn.UseVisualStyleBackColor = false;
+            this.minusBtn.Click += new System.EventHandler(this.minusBtn_Click);
             // 
             // plusBtn
             // 
@@ -235,6 +238,7 @@
             this.plusBtn.TabIndex = 16;
             this.plusBtn.Text = "+";
             this.plusBtn.UseVisualStyleBackColor = false;
+            this.plusBtn.Click += new System.EventHandler(this.plusBtn_Click);
             // 
             // plusMinusBtn
             // 
@@ -246,6 +250,7 @@
             this.plusMinusBtn.TabIndex = 17;
             this.plusMinusBtn.Text = "+/-";
             this.plusMinusBtn.UseVisualStyleBackColor = false;
+            this.plusMinusBtn.Click += new System.EventHandler(this.plusMinusBtn_Click);
             // 
             // zeroBtn
             // 
@@ -281,8 +286,9 @@
             this.equalBtn.TabIndex = 20;
             this.equalBtn.Text = "=";
             this.equalBtn.UseVisualStyleBackColor = false;
+            this.equalBtn.Click += new System.EventHandler(this.equalBtn_Click);
             // 
-            // form
+            // Calculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -308,7 +314,7 @@
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.percentBtn);
             this.Controls.Add(this.textBox);
-            this.Name = "form";
+            this.Name = "Calculator";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Calculator_Load);
             this.ResumeLayout(false);
