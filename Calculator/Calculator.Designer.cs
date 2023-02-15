@@ -55,6 +55,7 @@
             this.textBox.Font = new System.Drawing.Font("Lato", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox.Location = new System.Drawing.Point(17, 21);
             this.textBox.Name = "textBox";
+            this.textBox.ReadOnly = true;
             this.textBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBox.Size = new System.Drawing.Size(298, 30);
             this.textBox.TabIndex = 0;
@@ -71,6 +72,7 @@
             this.percentBtn.TabIndex = 1;
             this.percentBtn.Text = "%";
             this.percentBtn.UseVisualStyleBackColor = false;
+            this.percentBtn.Click += new System.EventHandler(this.percentBtn_Click);
             // 
             // clearBtn
             // 
@@ -314,8 +316,9 @@
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.percentBtn);
             this.Controls.Add(this.textBox);
+            this.MinimizeBox = false;
             this.Name = "Calculator";
-            this.Text = "Form1";
+            this.Text = "Calculator";
             this.Load += new System.EventHandler(this.Calculator_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

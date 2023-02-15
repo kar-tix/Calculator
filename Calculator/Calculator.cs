@@ -3,10 +3,12 @@ namespace Calculator
     public partial class Calculator : Form
     {
         private decimal firstValue = 0.0m, secondValue = 0.0m, finalValue = 0.0m;
-        private string operators = "+";
+        private char operators = ' ';
+        bool flag = false;
         public Calculator()
         {
             InitializeComponent();
+
         }
 
         private void Calculator_Load(object sender, EventArgs e)
@@ -14,9 +16,28 @@ namespace Calculator
 
         }
 
+        private void Clear_textBox()
+        {
+            if(flag)
+                textBox.Clear();
+            flag = false;
+        }
+
+        private void dotBtn_Click(object sender, EventArgs e)
+        {
+            Clear_textBox();
+
+            if (!textBox.Text.Contains(","))
+            {
+                textBox.Text += ",";
+            }
+        }
+
         private void zeroBtn_Click(object sender, EventArgs e)
         {
-            if(textBox.Text == "0")
+            Clear_textBox();
+
+            if (textBox.Text == "0")
             {
                 textBox.Text = "0";
             }
@@ -26,16 +47,10 @@ namespace Calculator
             }
         }
 
-        private void dotBtn_Click(object sender, EventArgs e)
-        {
-            if(!textBox.Text.Contains(","))
-            {
-                textBox.Text += ",";
-            }
-        }
-
         private void oneBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "1";
@@ -48,6 +63,8 @@ namespace Calculator
 
         private void twoBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "2";
@@ -60,6 +77,8 @@ namespace Calculator
 
         private void threeBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "3";
@@ -72,6 +91,8 @@ namespace Calculator
 
         private void fourBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "4";
@@ -84,6 +105,8 @@ namespace Calculator
 
         private void fiveBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "5";
@@ -96,6 +119,8 @@ namespace Calculator
 
         private void sixBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "6";
@@ -108,6 +133,8 @@ namespace Calculator
 
         private void sevenBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "7";
@@ -120,6 +147,8 @@ namespace Calculator
 
         private void eightBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "8";
@@ -132,6 +161,8 @@ namespace Calculator
 
         private void nineBtn_Click(object sender, EventArgs e)
         {
+            Clear_textBox();
+
             if (textBox.Text == "0")
             {
                 textBox.Text = "9";
@@ -144,21 +175,24 @@ namespace Calculator
 
         private void clearBtn_Click(object sender, EventArgs e)
         {
-
+            firstValue = 0.0m;
+            secondValue = 0.0m;
+            finalValue = 0.0m;
+            textBox.Text = "0";
         }
 
         private void multiBtn_Click(object sender, EventArgs e)
         {
             firstValue = decimal.Parse(textBox.Text);
             textBox.Clear();
-            operators = "x";
+            operators = 'x';
         }
 
         private void minusBtn_Click(object sender, EventArgs e)
         {
             firstValue = decimal.Parse(textBox.Text);
             textBox.Clear();
-            operators = "-";
+            operators = '-';
 
         }
 
@@ -166,19 +200,47 @@ namespace Calculator
         {
             firstValue = decimal.Parse(textBox.Text);
             textBox.Clear();
-            operators = "+";
+            operators = '+';
         }
 
         private void divBtn_Click(object sender, EventArgs e)
         {
             firstValue = decimal.Parse(textBox.Text);
             textBox.Clear();
-            operators = "/";
+            operators = '/';
+        }
+
+        private void percentBtn_Click(object sender, EventArgs e)
+        {
+            firstValue = decimal.Parse(textBox.Text) / 100;
+            textBox.Text = firstValue.ToString();
         }
 
         private void equalBtn_Click(object sender, EventArgs e)
         {
+            secondValue = decimal.Parse(textBox.Text);
+            switch (operators)
+            {
+                case '-':
+                    finalValue = firstValue - secondValue;
+                    break;
 
+                case '+':
+                    finalValue = firstValue + secondValue;
+                    break;
+
+                case 'x':
+                    finalValue = firstValue * secondValue;
+                    break;
+                case '/':
+                    finalValue = firstValue / secondValue;
+                    break;
+                default:
+                    break;
+            }
+            operators = ' ';
+            textBox.Text = finalValue.ToString();
+            flag = true;
         }
 
         private void plusMinusBtn_Click(object sender, EventArgs e)
