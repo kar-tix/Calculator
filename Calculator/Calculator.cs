@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices;
+
 namespace Calculator
 {
     public partial class Calculator : Form
@@ -8,7 +10,6 @@ namespace Calculator
         public Calculator()
         {
             InitializeComponent();
-
         }
 
         private void Calculator_Load(object sender, EventArgs e)
@@ -179,35 +180,51 @@ namespace Calculator
             secondValue = 0.0m;
             finalValue = 0.0m;
             textBox.Text = "0";
+            textBoxMin.Clear();
         }
 
         private void multiBtn_Click(object sender, EventArgs e)
         {
-            firstValue = decimal.Parse(textBox.Text);
-            textBox.Clear();
-            operators = 'x';
+            if(!textBoxMin.Text.Contains("*"))
+            {
+                firstValue = decimal.Parse(textBox.Text);
+                textBoxMin.Text = textBox.Text + " *";
+                textBox.Clear();
+                operators = 'x';
+            }
         }
 
         private void minusBtn_Click(object sender, EventArgs e)
         {
-            firstValue = decimal.Parse(textBox.Text);
-            textBox.Clear();
-            operators = '-';
-
+            if(!textBoxMin.Text.Contains("-"))
+            {
+                firstValue = decimal.Parse(textBox.Text);
+                textBoxMin.Text = textBox.Text + " -";
+                textBox.Clear();
+                operators = '-';
+            }
         }
 
         private void plusBtn_Click(object sender, EventArgs e)
         {
-            firstValue = decimal.Parse(textBox.Text);
-            textBox.Clear();
-            operators = '+';
+            if(!textBoxMin.Text.Contains("+"))
+            {
+                firstValue = decimal.Parse(textBox.Text);
+                textBoxMin.Text = textBox.Text + " +";
+                textBox.Clear();
+                operators = '+';
+            }
         }
 
         private void divBtn_Click(object sender, EventArgs e)
         {
-            firstValue = decimal.Parse(textBox.Text);
-            textBox.Clear();
-            operators = '/';
+            if(!textBoxMin.Text.Contains("/"))
+            {
+                firstValue = decimal.Parse(textBox.Text);
+                textBoxMin.Text = textBox.Text + " /";
+                textBox.Clear();
+                operators = '/';
+            }
         }
 
         private void percentBtn_Click(object sender, EventArgs e)
@@ -239,6 +256,7 @@ namespace Calculator
                     break;
             }
             operators = ' ';
+            textBoxMin.Clear();
             textBox.Text = finalValue.ToString();
             flag = true;
         }
